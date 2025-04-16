@@ -5,10 +5,10 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/timeline', label: 'Timeline' },
-  { href: '/maps', label: 'Maps & Context' },
+
   { href: '/resources', label: 'Resources' },
   { href: '/sources', label: 'Sources' },
-  { href: '/about', label: 'About' },
+
 ];
 
 interface NavMenuProps {

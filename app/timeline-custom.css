@@ -1,26 +1,55 @@
 /* Timeline core styles */
 .timeline-container {
-  position: relative;
   width: 100%;
-  min-height: 400px;
-  overflow-x: auto;
-  overflow-y: visible;
-  white-space: nowrap;
-  padding-bottom: 2rem;
-  border: 2px solid red !important;
-  background: rgba(255,0,0,0.05) !important;
+  padding: 2rem;
+  background: white;
 }
 
-.timeline-event {
-  position: absolute;
-  min-width: 180px;
-  max-width: 220px;
-  background: yellow !important;
-  border: 2px solid blue !important;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding: 1rem;
-  text-align: left;
-  transform: translateY(-50%);
-  z-index: 1000;
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .timeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .timeline-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Remove any conflicting styles */
+.navigation-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  transition: all 0.2s ease;
+  height: 100%;
+}
+
+.navigation-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-icon-container {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  background-color: #f3f4f6;
 }

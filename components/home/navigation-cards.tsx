@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Clock, Map, Info } from 'lucide-react';
+import { Clock, Map, Info, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const navigationCards = [
@@ -14,17 +14,17 @@ const navigationCards = [
     color: 'border-t-memorial-blue',
   },
   {
-    title: 'Maps & Context',
-    description: 'View interactive maps showing important locations in Europe and Canada related to the Holocaust.',
-    icon: <Map size={40} className="text-memorial-navy" />,
-    href: '/maps',
+    title: 'Sources',
+    description: 'View the cited sources and references.',
+    icon: <FileText size={40} className="text-memorial-navy" />,
+    href: '/sources',
     color: 'border-t-memorial-navy',
   },
   {
-    title: 'About & Resources',
-    description: 'Learn about this project, access educational resources, and view sources and references.',
+    title: 'Resources',
+    description: 'Access educational resources that are related to the Holocaust.',
     icon: <Info size={40} className="text-memorial-gold" />,
-    href: '/about',
+    href: '/resources',
     color: 'border-t-memorial-gold',
   },
 ];

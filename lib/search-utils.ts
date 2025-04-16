@@ -1,13 +1,13 @@
 import timelineEvents from '@/data/timeline-events';
-import mapLocations from '@/data/map-locations';
+
 import educationalResources from '@/data/educational-resources';
-import historicalContext from '@/data/historical-context';
+
 import { references } from '@/data/sources-references';
-import { TimelineEvent, MapLocation, EducationalResource, HistoricalContext } from '@/lib/types';
+import { TimelineEvent, EducationalResource } from '@/lib/types';
 import { Reference } from '@/data/sources-references';
 
 // Define search result types
-export type SearchResultType = 'event' | 'location' | 'resource' | 'context' | 'reference';
+export type SearchResultType = 'event' | 'resource' | 'reference';
 
 export interface SearchResult {
   id: string;
@@ -37,13 +37,11 @@ export function searchAllContent(query: string): SearchResult[] {
   
   // Search in each content type
   const eventResults = searchTimelineEvents(normalizedQuery, words);
-  const locationResults = searchMapLocations(normalizedQuery, words);
   const resourceResults = searchEducationalResources(normalizedQuery, words);
-  const contextResults = searchHistoricalContext(normalizedQuery, words);
   const referenceResults = searchReferences(normalizedQuery, words);
   
   // Combine and sort results by score
-  return [...eventResults, ...locationResults, ...resourceResults, ...contextResults, ...referenceResults]
+  return [...eventResults, ...resourceResults, ...referenceResults]
     .sort((a, b) => b.score - a.score)
     .slice(0, 50); // Limit to 50 results
 }
@@ -72,30 +70,6 @@ function searchTimelineEvents(query: string, queryWords: string[]): SearchResult
     .filter((result): result is SearchResult => result !== null);
 }
 
-// Search in map locations
-function searchMapLocations(query: string, queryWords: string[]): SearchResult[] {
-  return mapLocations
-    .map(location => {
-      const score = calculateScore(location, queryWords);
-      
-      if (score > 0) {
-        return {
-          id: location.id,
-          title: location.name,
-          description: location.description,
-          type: 'location' as const,
-          url: `/maps?location=${location.id}`,
-          year: location.yearEstablished,
-          categories: location.categories,
-          score
-        } as SearchResult;
-      }
-      
-      return null;
-    })
-    .filter((result): result is SearchResult => result !== null);
-}
-
 // Search in educational resources
 function searchEducationalResources(query: string, queryWords: string[]): SearchResult[] {
   return educationalResources
@@ -111,28 +85,6 @@ function searchEducationalResources(query: string, queryWords: string[]): Search
           url: `/resources?resource=${resource.id}`,
           year: resource.year,
           tags: resource.tags,
-          score
-        } as SearchResult;
-      }
-      
-      return null;
-    })
-    .filter((result): result is SearchResult => result !== null);
-}
-
-// Search in historical context
-function searchHistoricalContext(query: string, queryWords: string[]): SearchResult[] {
-  return historicalContext
-    .map(context => {
-      const score = calculateScore(context, queryWords);
-      
-      if (score > 0) {
-        return {
-          id: context.id,
-          title: context.title,
-          description: context.description,
-          type: 'context' as const,
-          url: `/maps#${context.id}`,
           score
         } as SearchResult;
       }
@@ -167,7 +119,7 @@ function searchReferences(query: string, queryWords: string[]): SearchResult[] {
 }
 
 // Calculate search score based on matches
-function calculateScore(item: TimelineEvent | MapLocation | EducationalResource | HistoricalContext | Reference, queryWords: string[]): number {
+function calculateScore(item: TimelineEvent | EducationalResource | Reference, queryWords: string[]): number {
   let score = 0;
   
   // Convert item to a standardized format for searching

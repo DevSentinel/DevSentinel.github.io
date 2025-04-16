@@ -21,71 +21,68 @@ export default function TimelineEvent({
     : null;
   
   const eventDate = new Date(event.date);
-  const formattedDate = eventDate.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short', 
-    day: 'numeric' 
-  });
   
   return (
     <div
-      className={`relative overflow-hidden w-[220px] p-4 rounded-xl shadow-xl backdrop-blur-md bg-white/50 border-l-8 transition-all duration-300 cursor-pointer 
-        ${isSelected ? 'border-blue-400 ring-2 ring-blue-300 shadow-blue-200 animate-glow' : `border-[${primaryCategory?.color || '#6B7280'}] hover:scale-105 hover:shadow-2xl`}
-        group animate-fadein`}
-      style={{
-        borderLeftColor: primaryCategory?.color || '#6B7280',
-        fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
-        minHeight: 160,
-        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.12)',
-      }}
+      className={`relative navigation-card bg-white rounded-xl shadow-md border-t-4 p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 w-full mb-6 ${isSelected ? 'border-t-blue-400 ring-2 ring-blue-200' : ''}`}
+      style={{ borderTopColor: primaryCategory?.color || '#6B7280' }}
       onClick={onClick}
     >
-      {/* Decorative blurred circle */}
-      <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-300 opacity-30 rounded-full blur-2xl z-0"></div>
-      <div className="relative z-10 flex flex-col gap-2">
-        {/* Date marker */}
-        <div className="flex items-center mb-2 gap-2">
-          <div
-            className="w-12 h-12 rounded-lg flex flex-col items-center justify-center text-white font-bold shadow-md"
-            style={{
-              background: primaryCategory?.color || '#3B82F6',
-              boxShadow: '0 2px 12px 0 rgba(59,130,246,0.15)',
-              fontSize: 15,
-              letterSpacing: 1,
-            }}
-          >
-            <span className="text-xs font-semibold opacity-80">
-              {eventDate.toLocaleString('en-US', { month: 'short' }).toUpperCase()}
-            </span>
-            <span className="text-base font-bold leading-none">{eventDate.getFullYear()}</span>
-          </div>
-        </div>
-        {/* Event content */}
-        <div className="flex flex-col gap-1">
-          <h3 className="text-lg font-bold text-gray-900 leading-tight mb-1 group-hover:text-blue-700 transition-colors duration-200">
-            {event.title}
-          </h3>
-          <p className="text-[13px] text-gray-700 opacity-90 line-clamp-3">
-            {event.description}
-          </p>
-        </div>
-      </div>
       {/* Glow animation for selected */}
       {isSelected && (
         <div className="absolute inset-0 rounded-xl pointer-events-none animate-glow border-2 border-blue-400 shadow-blue-200"></div>
       )}
-      <style jsx>{`
-        .animate-fadein {
-          animation: fadein 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        @keyframes fadein {
-          from { opacity: 0; transform: translateY(20px) scale(0.98); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-glow {
-          box-shadow: 0 0 16px 2px #60a5fa55, 0 2px 24px 0 #60a5fa22;
-        }
-      `}</style>
+      <div className="card-icon-container mb-5 flex items-center justify-center">
+  <div
+    className="flex flex-col items-center justify-center"
+    style={{ position: 'relative' }}
+  >
+    <div
+      className="flex flex-col items-center justify-center"
+      style={{
+        background: primaryCategory?.color || '#3B82F6',
+        borderRadius: '1.5rem',
+        minWidth: '70px',
+        minHeight: '70px',
+        boxShadow: '0 2px 16px 0 rgba(0,0,0,0.15)',
+        border: '2px solid #fff',
+        padding: '10px 0',
+        marginBottom: '0',
+        position: 'relative',
+        zIndex: 2,
+      }}
+    >
+      <span
+        style={{
+          color: '#fff',
+          fontWeight: 700,
+          fontSize: '1.1rem',
+          letterSpacing: '1px',
+          textShadow: '0 2px 8px rgba(0,0,0,0.18)',
+          lineHeight: 1,
+        }}
+      >
+        {eventDate.toLocaleString('en-US', { month: 'short' }).toUpperCase()}
+      </span>
+      <span
+        style={{
+          color: '#fff',
+          fontWeight: 900,
+          fontSize: '1.25rem',
+          textShadow: '0 2px 8px rgba(0,0,0,0.18)',
+          lineHeight: 1.2,
+        }}
+      >
+        {eventDate.getFullYear()}
+      </span>
+    </div>
+  </div>
+</div>
+      {/* Event content */}
+      <div className="flex flex-col gap-1">
+        <h3 className="text-2xl font-semibold mb-3 text-memorial-navy text-center">{event.title}</h3>
+        <p className="text-gray-700 leading-relaxed text-center px-4 mb-4">{event.description}</p>
+      </div>
     </div>
   );
 }

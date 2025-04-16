@@ -1,0 +1,15 @@
+# Netlify configuration for a Next.js static export (SSG)
+[build]
+  command = "npm run build && npm run export"
+  publish = "out"
+
+[dev]
+  command = "npm run dev"
+
+[build.environment]
+  NODE_VERSION = "18.18.0"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

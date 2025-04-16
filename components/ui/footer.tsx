@@ -10,8 +10,8 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      {/* Background pattern overlay */}
-      <div className="absolute inset-0 bg-[url('/images/pattern-bg.png')] opacity-5"></div>
+      {/* Background pattern overlay removed to eliminate gray area */}
+      {/* <div className="absolute inset-0 bg-[url('/images/pattern-bg.png')] opacity-5"></div> */}
       
       <div className="container">
         <div className="footer-content">
@@ -47,15 +47,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/maps" className="text-gray-300 hover:text-memorial-gold transition-colors flex items-center">
+                <Link href="/sources" className="text-gray-300 hover:text-memorial-gold transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 bg-memorial-gold rounded-full mr-2 link-dot"></span>
-                  Maps & Context
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-300 hover:text-memorial-gold transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 bg-memorial-gold rounded-full mr-2 link-dot"></span>
-                  About & Resources
+                  Sources & References
                 </Link>
               </li>
               <li>
@@ -75,17 +69,14 @@ export default function Footer() {
               This educational website aims to document the Holocaust and explore Canada's connections to this historical period.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              We are committed to preserving the memory of the Holocaust and educating future generations about this important history.
+              Website made by Vihas & Chandr
             </p>
           </div>
         </div>
         
         <div className="footer-bottom border-t border-gray-700/50 mt-10 pt-6 text-center">
           <p className="copyright text-gray-400">
-            {currentYear} Holocaust History Project. For educational purposes only.
-          </p>
-          <p className="dedication text-gray-500 text-sm mt-2">
-            This site is dedicated to the memory of the victims and survivors of the Holocaust.
+            {currentYear} Holocaust History Project
           </p>
         </div>
       </div>

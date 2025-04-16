@@ -3,49 +3,22 @@ import { TimelineEvent, EventCategory } from '@/lib/types';
 /**
  * Calculate the visible time range based on current year and zoom level
  */
+// Always use a 3-year window for the timeline
 export function getVisibleTimeRange(
   currentYear: number,
-  zoomLevel: number,
+  _zoomLevel: number, // ignored
   minYear: number,
   maxYear: number
 ): { startYear: number; endYear: number } {
-  // Calculate range based on zoom level
-  // Zoom levels: 1 (decade view), 2 (5-year view), 3 (year view), 4 (month view)
-  let yearRange: number;
-  
-  switch (zoomLevel) {
-    case 1: // Decade view
-      yearRange = 10;
-      break;
-    case 2: // 5-year view
-      yearRange = 5;
-      break;
-    case 3: // Year view
-      yearRange = 2;
-      break;
-    case 4: // Month view
-      yearRange = 1;
-      break;
-    default:
-      yearRange = 10;
-  }
-  
-  // Calculate start and end years
-  const halfRange = Math.floor(yearRange / 2);
-  let startYear = currentYear - halfRange;
-  let endYear = currentYear + (yearRange - halfRange);
-  
-  // Ensure start and end years are within bounds
-  if (startYear < minYear) {
-    startYear = minYear;
-    endYear = Math.min(maxYear, minYear + yearRange - 1);
-  }
-  
+  const yearRange = 3;
+  // Snap to the start of a 3-year window (e.g., 1939, 1942, 1945, ...)
+  const offset = (currentYear - minYear) % yearRange;
+  let startYear = currentYear - offset;
+  let endYear = startYear + yearRange - 1;
   if (endYear > maxYear) {
     endYear = maxYear;
-    startYear = Math.max(minYear, maxYear - yearRange + 1);
+    startYear = Math.max(minYear, endYear - yearRange + 1);
   }
-  
   return { startYear, endYear };
 }
 
