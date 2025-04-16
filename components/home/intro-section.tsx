@@ -23,7 +23,7 @@ export default function IntroSection() {
           <div className="memorial-divider"></div>
           
           <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto mb-10 leading-relaxed">
-            Exploring the Holocaust with a focus on Canada's connections and perspectives
+            Exploring the Holocaust with a focus on Canada&apos;s connections and perspectives
           </p>
           
           <a 

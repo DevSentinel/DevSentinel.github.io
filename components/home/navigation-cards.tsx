@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Clock, Map, Info, FileText } from 'lucide-react';
+import { Clock, Info, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const navigationCards = [
@@ -74,7 +74,7 @@ export default function NavigationCards() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {navigationCards.map((card, index) => (
+          {navigationCards.map((card) => (
             <motion.div key={card.href} variants={item}>
               <Link 
                 href={card.href}

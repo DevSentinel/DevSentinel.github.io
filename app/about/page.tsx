@@ -1,9 +1,5 @@
-import React from 'react';
-import ProjectInfo from '@/components/about/project-info';
-import Credits from '@/components/about/credits';
-import projectInfo from '@/data/project-info';
-import ResourceGrid from '@/components/education/resource-grid';
-import educationalResources from '@/data/educational-resources';
+import React, { Suspense } from 'react';
+import ClientAboutContent from './client-about-content';
 
 export default function AboutPage() {
   return (
@@ -14,37 +10,9 @@ export default function AboutPage() {
           <p className="text-lg md:text-xl text-blue-200 text-center max-w-2xl">Discover the story and mission behind this Holocaust education resource. Our project blends rigorous research with a modern, interactive experience, designed to engage and inform a new generation of learners.</p>
         </div>
       </section>
-      <div className="space-y-16 w-full max-w-4xl">
-        {/* Project Information Section */}
-        <section>
-          <div className="rounded-2xl bg-white/10 backdrop-blur-md shadow-xl p-8 border border-white/20 animate-fadein-glow">
-            <ProjectInfo 
-              title={projectInfo.title}
-              description={projectInfo.description}
-              mission={projectInfo.mission}
-              goals={projectInfo.goals}
-            />
-          </div>
-        </section>
-        
-        {/* Team and Acknowledgements Section */}
-        <section>
-          <Credits 
-            team={projectInfo.team}
-            acknowledgements={projectInfo.acknowledgements}
-            contactEmail={projectInfo.contactEmail}
-          />
-        </section>
-        
-        {/* Educational Resources Section */}
-        <section className="mt-16">
-          <ResourceGrid 
-            resources={educationalResources}
-            title="Educational Resources"
-            description="Explore our curated collection of books, articles, videos, and websites about the Holocaust."
-          />
-        </section>
-      </div>
+      <Suspense fallback={<div className="text-center py-12 text-blue-100">Loading...</div>}>
+        <ClientAboutContent />
+      </Suspense>
     </main>
   );
 }

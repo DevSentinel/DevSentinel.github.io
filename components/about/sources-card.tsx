@@ -4,36 +4,45 @@ import React from "react";
 import { ExternalLink, FileText } from "lucide-react";
 import { Reference } from "@/data/sources-references";
 
+// Accept CategoryInfo from either categories.ts or sources-references.ts
+// Accept both CategoryInfo (timeline) and SourceCategory (sources)
+type CardCategory = { id: string; name?: string; label?: string; color?: string };
+
+
 interface SourcesCardProps {
   reference: Reference;
-  categories: { id: string; name: string }[];
+  categories: CardCategory[];
 }
 
-function getSourceCardColor(reference: Reference) {
-  // Assign a color based on the first category, or default to memorial-navy
-  const cat = reference.categories[0];
-  switch (cat) {
-    case 'primary':
-      return 'border-t-memorial-gold';
-    case 'secondary':
-      return 'border-t-memorial-blue';
-    case 'academic':
-      return 'border-t-memorial-navy';
-    case 'memorial':
-      return 'border-t-teal-400';
-    case 'canadian':
-      return 'border-t-memorial-blue';
-    case 'digital':
-      return 'border-t-memorial-navy';
-    default:
-      return 'border-t-memorial-navy';
+function getSourceCardColor(reference: Reference, categories: CardCategory[]) {
+  // Try to find the first matching category and use its color, fallback to memorial-navy
+  const catId = reference.categories[0];
+  const catInfo = categories.find(c => String(c.id) === catId);
+  if (catInfo) {
+    switch (catInfo.id) {
+      case 'primary':
+        return 'border-t-memorial-gold';
+      case 'secondary':
+        return 'border-t-memorial-blue';
+      case 'academic':
+        return 'border-t-memorial-navy';
+      case 'memorial':
+        return 'border-t-teal-400';
+      case 'canadian':
+        return 'border-t-memorial-blue';
+      case 'digital':
+        return 'border-t-memorial-navy';
+      default:
+        return 'border-t-memorial-navy';
+    }
   }
+  return 'border-t-memorial-navy';
 }
 
 export default function SourcesCard({ reference, categories }: SourcesCardProps) {
   return (
     <div
-      className={`navigation-card bg-white rounded-xl shadow-md border-t-4 p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${getSourceCardColor(reference)}`}
+      className={`navigation-card bg-white rounded-xl shadow-md border-t-4 p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${getSourceCardColor(reference, categories)}`}
     >
       <div className="card-icon-container mb-5 p-4 bg-gray-50 rounded-full mx-auto flex items-center justify-center">
         <FileText size={18} />

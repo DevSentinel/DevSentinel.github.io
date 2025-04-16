@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { Github, Mail, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
@@ -20,7 +19,7 @@ export default function Footer() {
               Holocaust History Project
             </h3>
             <p className="text-gray-300 leading-relaxed">
-              An educational resource exploring the Holocaust with a focus on Canada's connections and perspectives.
+              An educational resource exploring the Holocaust with a focus on Canada&apos;s connections and perspectives.
             </p>
             <div className="footer-social mt-6 flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-memorial-gold transition-colors" aria-label="GitHub">
@@ -66,10 +65,10 @@ export default function Footer() {
               About This Project
             </h3>
             <p className="text-gray-300 leading-relaxed mb-4">
-              This educational website aims to document the Holocaust and explore Canada's connections to this historical period.
+              This educational website aims to document the Holocaust and explore Canada&apos;s connections to this historical period.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              Website made by Vihas & Chandr
+              Website made by Vihas &amp; Chandr
             </p>
           </div>
         </div>

@@ -16,13 +16,16 @@ export default function useSearch({ initialQuery = '', debounceMs = 300 }: UseSe
   const [isSearching, setIsSearching] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<SearchResultType[]>([]);
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // Only call useSearchParams on the client
+  const searchParams = typeof window !== 'undefined' ? useSearchParams() : null;
   
   // Get search query from URL if available
   useEffect(() => {
+    if (!searchParams) return;
     const urlQuery = searchParams.get('q');
     if (urlQuery && urlQuery !== query) {
       setQuery(urlQuery);
+      setDebouncedQuery(urlQuery);
     }
   }, [searchParams]); 
   

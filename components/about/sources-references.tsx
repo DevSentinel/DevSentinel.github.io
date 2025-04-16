@@ -1,6 +1,5 @@
 "use client";
-import React, { useState } from 'react';
-import { ExternalLink, Search, X } from 'lucide-react';
+import React from 'react';
 import SourcesCard from './sources-card';
 import { Reference } from '@/data/sources-references';
 

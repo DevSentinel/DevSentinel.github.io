@@ -1,9 +1,7 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ExternalLink, BookOpen, Video, FileText, Globe } from 'lucide-react';
+import { BookOpen, Video, FileText, Globe } from 'lucide-react';
 import { EducationalResource } from '@/lib/types';
 
 interface ResourceCardProps {

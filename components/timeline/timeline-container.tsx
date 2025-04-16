@@ -1,11 +1,12 @@
 "use client";
 
 import React from 'react';
-import { ChevronLeft } from 'lucide-react';
+// Removed unused import of ChevronLeft
+
 import timelineEvents from '@/data/timeline-events';
 import eventCategories from '@/data/categories';
 import TimelineEvent from '@/components/timeline/timeline-event';
-import TimelineNavigation from '@/components/timeline/timeline-navigation';
+// Removed unused TimelineNavigation import to fix lint error.
 import useTimeline from '@/hooks/use-timeline';
 
 export default function TimelineContainer() {

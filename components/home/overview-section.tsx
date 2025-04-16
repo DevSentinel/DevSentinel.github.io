@@ -21,7 +21,7 @@ export default function OverviewSection() {
           className="text-center mb-12"
         >
           <h2>
-            The Holocaust and Canada
+            &quot;None Is Too Many&quot;: The Holocaust and Canada
           </h2>
           <div className="memorial-divider"></div>
         </motion.div>
@@ -60,17 +60,17 @@ export default function OverviewSection() {
             variants={fadeIn}
           >
             <h3>
-              Canada's Connection
+              Canada&apos;s Connection
             </h3>
             <p>
-              Canada's connection to the Holocaust is complex. Prior to and during World War II, 
+              Canada&apos;s connection to the Holocaust is complex. Prior to and during World War II, 
               Canada maintained restrictive immigration policies that limited Jewish refugee admissions. 
-              The infamous "None is Too Many" policy reflected the antisemitism present in Canadian 
+              The infamous &quot;None is Too Many&quot; policy reflected the antisemitism present in Canadian 
               society and government at that time.
             </p>
             <p>
-              After the war, Canada's policies changed, and between 1947 and 1955, approximately 35,000 
-              Holocaust survivors immigrated to Canada, rebuilding their lives and contributing significantly 
+              After the war, Canada&apos;s policies changed, and between 1947 and 1955, approximately 35,000 
+              Holocaust survivors immigrated to Canada, rebuilding their lives and contributed significantly 
               to Canadian society. Their stories and experiences form an important part of both Holocaust 
               history and Canadian history.
             </p>

@@ -7,7 +7,7 @@ import { TimelineEvent, EducationalResource } from '@/lib/types';
 import { Reference } from '@/data/sources-references';
 
 // Define search result types
-export type SearchResultType = 'event' | 'resource' | 'reference';
+export type SearchResultType = 'event' | 'resource' | 'reference' | 'location' | 'context';
 
 export interface SearchResult {
   id: string;
@@ -123,14 +123,15 @@ function calculateScore(item: TimelineEvent | EducationalResource | Reference, q
   let score = 0;
   
   // Convert item to a standardized format for searching
-  const searchableItem: Record<string, any> = {
+  const searchableItem: Record<string, unknown> = {
     ...item,
     // Handle different naming conventions
-    title: 'title' in item ? item.title : ('name' in item ? (item as any).name : ''),
+    title: 'title' in item ? item.title : ('name' in item ? (item as { name?: string }).name ?? '' : ''),
   };
+
   
   // Search in title/name (highest weight)
-  const title = searchableItem.title?.toLowerCase() || '';
+  const title = typeof searchableItem.title === 'string' ? searchableItem.title.toLowerCase() : '';
   queryWords.forEach(word => {
     if (title.includes(word)) {
       score += 10;
@@ -143,7 +144,7 @@ function calculateScore(item: TimelineEvent | EducationalResource | Reference, q
   });
   
   // Search in description (medium weight)
-  const description = searchableItem.description?.toLowerCase() || '';
+  const description = typeof searchableItem.description === 'string' ? searchableItem.description.toLowerCase() : '';
   queryWords.forEach(word => {
     if (description.includes(word)) {
       score += 5;
@@ -151,7 +152,7 @@ function calculateScore(item: TimelineEvent | EducationalResource | Reference, q
   });
   
   // Search in long description if available (lower weight)
-  const longDescription = searchableItem.longDescription?.toLowerCase() || '';
+  const longDescription = typeof searchableItem.longDescription === 'string' ? searchableItem.longDescription.toLowerCase() : '';
   queryWords.forEach(word => {
     if (longDescription.includes(word)) {
       score += 3;
@@ -159,7 +160,7 @@ function calculateScore(item: TimelineEvent | EducationalResource | Reference, q
   });
   
   // Search in author if available
-  const author = searchableItem.author?.toLowerCase() || '';
+  const author = typeof searchableItem.author === 'string' ? searchableItem.author.toLowerCase() : '';
   queryWords.forEach(word => {
     if (author.includes(word)) {
       score += 8;
@@ -168,8 +169,8 @@ function calculateScore(item: TimelineEvent | EducationalResource | Reference, q
   
   // Search in categories/tags if available
   const categories = [
-    ...(searchableItem.categories || []),
-    ...(searchableItem.tags || [])
+    ...(Array.isArray(searchableItem.categories) ? searchableItem.categories : []),
+    ...(Array.isArray(searchableItem.tags) ? searchableItem.tags : [])
   ].map(cat => typeof cat === 'string' ? cat.toLowerCase() : '');
   
   queryWords.forEach(word => {
@@ -179,7 +180,7 @@ function calculateScore(item: TimelineEvent | EducationalResource | Reference, q
   });
   
   // Search in country if available (for locations)
-  const country = searchableItem.country?.toLowerCase() || '';
+  const country = typeof searchableItem.country === 'string' ? searchableItem.country.toLowerCase() : '';
   queryWords.forEach(word => {
     if (country.includes(word)) {
       score += 6;

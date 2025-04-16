@@ -44,7 +44,7 @@ export default function Header() {
               <span className="site-divider"></span>
             </Link>
             <p className="site-tagline">
-              Exploring Canada's connections to the Holocaust
+              Exploring Canada&apos;s connections to the Holocaust
             </p>
           </motion.div>
           

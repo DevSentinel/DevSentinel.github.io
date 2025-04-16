@@ -1,7 +1,7 @@
 # Netlify configuration for a Next.js static export (SSG)
 [build]
-  command = "npm run build && npm run export"
-  publish = "out"
+  command = "npm run build"
+  publish = ".next"
 
 [dev]
   command = "npm run dev"
