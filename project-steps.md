@@ -1,7 +1,7 @@
 # Implementation Plan
 
 ## Project Setup and Structure
-- [ ] Step 1: Initialize Next.js Project Structure
+- [x] Step 1: Initialize Next.js Project Structure
   - **Task**: Create the base Next.js file structure with appropriate routes for the timeline, maps, about pages, etc.
   - **Files**:
     - `app/page.tsx`: Home page component
@@ -12,7 +12,7 @@
     - `app/globals.css`: Global styles
   - **Step Dependencies**: None, this is the first step
 
-- [ ] Step 2: Set Up Project Configuration
+- [x] Step 2: Set Up Project Configuration
   - **Task**: Configure necessary Next.js settings, TypeScript configurations, and project metadata
   - **Files**:
     - `next.config.js`: Next.js configuration
@@ -23,7 +23,7 @@
   - **Step Dependencies**: Step 1
 
 ## Core Components
-- [ ] Step 3: Create Layout Components
+- [x] Step 3: Create Layout Components
   - **Task**: Implement page layout components including navigation, header, and footer
   - **Files**:
     - `components/ui/header.tsx`: Site header with navigation
@@ -32,7 +32,7 @@
     - `app/layout.tsx`: Update to include header and footer
   - **Step Dependencies**: Step 2
 
-- [ ] Step 4: Implement Homepage Components
+- [x] Step 4: Implement Homepage Components
   - **Task**: Create components for the homepage including intro section, project overview, and navigation cards
   - **Files**:
     - `components/home/intro-section.tsx`: Introduction to the project
@@ -42,7 +42,7 @@
   - **Step Dependencies**: Step 3
 
 ## Data Structure
-- [ ] Step 5: Create Timeline Data Model
+- [x] Step 5: Create Timeline Data Model
   - **Task**: Define the data structure for timeline events and create a data file
   - **Files**:
     - `lib/types.ts`: Type definitions for events
@@ -50,16 +50,17 @@
     - `data/categories.ts`: Categories for filtering timeline events
   - **Step Dependencies**: Step 2
 
-- [ ] Step 6: Create Maps and Location Data
+- [x] Step 6: Create Maps and Location Data
   - **Task**: Define data structure for map locations and create a data file
   - **Files**:
     - `lib/types.ts`: Add type definitions for map locations
     - `data/map-locations.ts`: Data file with map locations
     - `data/map-categories.ts`: Categories for map locations
   - **Step Dependencies**: Step 5
+  - **Note**: Completed with additional CSS fixes
 
 ## Timeline Feature
-- [ ] Step 7: Create Basic Timeline Component
+- [x] Step 7: Create Basic Timeline Component
   - **Task**: Implement the core timeline visualization component
   - **Files**:
     - `components/timeline/timeline-container.tsx`: Main timeline container
@@ -68,7 +69,7 @@
     - `app/timeline/page.tsx`: Assemble timeline page
   - **Step Dependencies**: Step 5
 
-- [ ] Step 8: Implement Timeline Interaction Features
+- [x] Step 8: Implement Timeline Interaction Features
   - **Task**: Add interactive features to the timeline including zoom, scroll, and selection
   - **Files**:
     - `components/timeline/timeline-container.tsx`: Update with interactive features
@@ -76,7 +77,7 @@
     - `lib/timeline-utils.ts`: Utility functions for timeline calculations
   - **Step Dependencies**: Step 7
 
-- [ ] Step 9: Create Event Detail Components
+- [x] Step 9: Create Event Detail Components
   - **Task**: Implement components for displaying detailed information about selected events
   - **Files**:
     - `components/timeline/event-detail-panel.tsx`: Panel for showing event details
@@ -85,7 +86,7 @@
     - `app/timeline/page.tsx`: Update to include detail panel
   - **Step Dependencies**: Step 8
 
-- [ ] Step 10: Implement Timeline Filtering
+- [x] Step 10: Implement Timeline Filtering
   - **Task**: Add filtering options for the timeline by time period and event type
   - **Files**:
     - `components/timeline/filter-controls.tsx`: UI for filtering options
@@ -94,7 +95,7 @@
   - **Step Dependencies**: Step 9
 
 ## Maps Feature
-- [ ] Step 11: Implement Interactive Map
+- [x] Step 11: Implement Interactive Map
   - **Task**: Create interactive map showing key locations in Europe and Canada
   - **Files**:
     - `components/maps/map-container.tsx`: Main map component
@@ -103,7 +104,7 @@
     - `app/maps/page.tsx`: Assemble maps page
   - **Step Dependencies**: Step 6
 
-- [ ] Step 12: Create Location Detail Components
+- [x] Step 12: Create Location Detail Components
   - **Task**: Implement components for displaying information about selected map locations
   - **Files**:
     - `components/maps/location-detail.tsx`: Panel for showing location details
@@ -111,7 +112,7 @@
     - `app/maps/page.tsx`: Update to include detail panel
   - **Step Dependencies**: Step 11
 
-- [ ] Step 13: Implement Map Filtering and Layers
+- [x] Step 13: Implement Map Filtering and Layers
   - **Task**: Add filtering options for the map by location type and time period
   - **Files**:
     - `components/maps/map-filter-controls.tsx`: UI for map filtering options
@@ -121,7 +122,7 @@
   - **Step Dependencies**: Step 12
 
 ## Educational Components
-- [ ] Step 14: Create Historical Context Section
+- [x] Step 14: Create Historical Context Section
   - **Task**: Implement components for the historical context section
   - **Files**:
     - `components/education/historical-context.tsx`: Historical context component
@@ -129,7 +130,7 @@
     - `app/maps/page.tsx`: Update to include historical context
   - **Step Dependencies**: Step 6
 
-- [ ] Step 15: Implement Educational Resources Section
+- [x] Step 15: Implement Educational Resources Section
   - **Task**: Create components for displaying educational resources and further reading
   - **Files**:
     - `components/education/resources-section.tsx`: Educational resources component
@@ -139,7 +140,7 @@
   - **Step Dependencies**: Step 14
 
 ## About Page and Citations
-- [ ] Step 16: Implement About Page Components
+- [x] Step 16: Implement About Page Components
   - **Task**: Create components for the about page including project information
   - **Files**:
     - `components/about/project-info.tsx`: Project information component
@@ -148,17 +149,16 @@
     - `app/about/page.tsx`: Assemble about page
   - **Step Dependencies**: Step 3
 
-- [ ] Step 17: Create Sources and References Section
+- [x] Step 17: Create Sources and References Section
   - **Task**: Implement components for displaying sources and references
   - **Files**:
-    - `components/about/sources-section.tsx`: Sources and references component
-    - `data/sources.ts`: Sources data
-    - `components/ui/citation.tsx`: Citation component
-    - `app/about/page.tsx`: Update to include sources section
+    - `components/about/sources-references.tsx`: Sources and references component
+    - `data/sources-references.ts`: Sources and references data
+    - `app/sources/page.tsx`: Create dedicated sources page
   - **Step Dependencies**: Step 16
 
 ## Search Functionality
-- [ ] Step 18: Implement Search Feature
+- [x] Step 18: Implement Search Feature
   - **Task**: Add search functionality across the site
   - **Files**:
     - `components/ui/search-bar.tsx`: Search input component
@@ -168,7 +168,7 @@
   - **Step Dependencies**: Steps 5, 6
 
 ## Responsive Design
-- [ ] Step 19: Implement Responsive Layout
+- [x] Step 19: Implement Responsive Layout
   - **Task**: Ensure all components are responsive and work well on different screen sizes
   - **Files**:
     - `components/ui/header.tsx`: Update for responsive design
@@ -196,7 +196,7 @@
   - **Step Dependencies**: Step 20
 
 ## Final Polish and Testing
-- [ ] Step 22: Image Optimization and Media Management
+- [x] Step 22: Image Optimization and Media Management
   - **Task**: Optimize images and media for fast loading and responsiveness
   - **Files**:
     - `components/ui/optimized-image.tsx`: Image optimization component
@@ -204,10 +204,44 @@
     - Update various components to use optimized images
   - **Step Dependencies**: Step 19
 
-- [ ] Step 23: Final Testing and Performance Optimization
+- [x] Step 23: Final Testing and Performance Optimization
   - **Task**: Test the application on different devices and optimize performance
   - **Files**:
     - `next.config.js`: Update with performance optimizations
     - `app/layout.tsx`: Add performance monitoring
     - Fix any issues discovered during testing
   - **Step Dependencies**: Step 22
+
+- [x] Step 23: Fix CSS Styling Issues
+  - **Task**: Resolve CSS styling issues and ensure proper display of all components
+  - **Files**:
+    - `app/globals.css`: Update CSS to use standard CSS instead of Tailwind directives
+    - `postcss.config.js`: Configure PostCSS properly
+    - `package.json`: Update dependencies
+  - **Step Dependencies**: Step 22
+
+- [x] Step 24: Fix CSS and Module Loading Issues
+  - **Task**: Resolve issues with Tailwind CSS v4 and lightningcss module in Next.js
+  - **Files**:
+    - `postcss.config.js`: Update PostCSS configuration to use object format for Tailwind CSS v4
+    - `package.json`: Remove Turbopack flag from dev script
+    - `next.config.js`: Update experimental configuration
+  - **Step Dependencies**: Step 23
+
+- [x] Step 800: Update Component CSS Classes
+  - **Task**: Update all components to use the new CSS classes from globals.css
+  - **Files**:
+    - `components/home/intro-section.tsx`: Update to use new CSS classes
+    - `components/home/overview-section.tsx`: Update to use new CSS classes
+    - `components/home/navigation-cards.tsx`: Update to use new CSS classes
+    - `components/ui/header.tsx`: Update to use new CSS classes
+    - `components/ui/footer.tsx`: Update to use new CSS classes
+    - `components/ui/nav-menu.tsx`: Update to use new CSS classes
+    - `components/ui/search-bar.tsx`: Update to use new CSS classes
+  - **Step Dependencies**: Step 24
+
+- [x] Step 801: Test CSS Styling
+  - **Task**: Test the updated CSS styling across all components
+  - **Files**:
+    - All component files updated in Step 800
+  - **Step Dependencies**: Step 800

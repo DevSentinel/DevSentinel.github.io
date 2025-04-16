@@ -2,6 +2,8 @@
 const nextConfig = {
   /* config options here */
   reactStrictMode: true,
+  
+  // Image optimization configuration
   images: {
     domains: [],
     remotePatterns: [
@@ -11,9 +13,13 @@ const nextConfig = {
       },
     ],
   },
+  
+  // Enable compression
+  compress: true,
+
+  // Experimental features
   experimental: {
-    // Enable server actions
-    serverActions: true,
+    // Add any experimental features here
   },
 };
 

@@ -1,0 +1,26 @@
+/* Timeline core styles */
+.timeline-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow-x: auto;
+  overflow-y: visible;
+  white-space: nowrap;
+  padding-bottom: 2rem;
+  border: 2px solid red !important;
+  background: rgba(255,0,0,0.05) !important;
+}
+
+.timeline-event {
+  position: absolute;
+  min-width: 180px;
+  max-width: 220px;
+  background: yellow !important;
+  border: 2px solid blue !important;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1rem;
+  text-align: left;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
